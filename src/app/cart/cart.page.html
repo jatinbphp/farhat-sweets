@@ -1,0 +1,70 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>      
+    </ion-buttons>
+    <!--<ion-button slot="start">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>-->
+    <ion-title class="ion-text-center">
+      <h2>cart</h2>      
+      <h6>{{productDetailInCartArrayLength}} items</h6>
+    </ion-title>
+    <!--<ion-chip slot="end">
+      <ion-label [ngClass]="{'show-red-dot' : num_of_items_in_cart > 0}">{{num_of_items_in_cart}}</ion-label>
+      <img src="../../assets/images/cart-bag-icon1.png">
+    </ion-chip>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="cart-total">
+    <ion-row>
+      <ion-col size="9">
+        <h6>Total</h6>
+        <!--<h6>Basket Total</h6>
+        <p>{{productDetailInCartArrayLength}} Products</p>-->
+      </ion-col>
+      <ion-col size="3" class="price text-right">${{cartTotal | number:'1.2-2'}}</ion-col>
+    </ion-row>
+  </ion-grid>  
+  <ion-grid class="add-pro-list" *ngIf="productDetailInCartArray.length > 0 && cartCalculationArray.length > 0">          
+    <ion-row class="add-pro-item" *ngFor="let cartItem of productDetailInCartArray;let i=index;">      
+      <!--<ion-buttons class="close-btn" (click)="removeCartItem(cartItem.id,cartCalculationArray[i].product_to)">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-buttons>-->
+      <ion-col size="9" class="pro-info">
+        <ion-thumbnail *ngIf="cartItem.images.length > 0">
+          <ion-img [src]="cartItem.images[0].src"></ion-img>
+        </ion-thumbnail>        
+        <ion-thumbnail *ngIf="cartItem.images.length == 0">
+          <ion-img src="../../assets/images/icon.png"></ion-img>
+        </ion-thumbnail>
+        <div class="pro-info-in">         
+          <h6>{{ cartItem.name }}</h6>
+          <div class="pro-quantity-input">
+            <input class="minus" type="button" value="-" (click)="decreaseQuantity(cartItem)">
+            <input class="input-number" type="number" value="{{cartCalculationArray[i].product_qt}}" name="{{cartItem.id}}">
+            <input class="plus" type="button" value="+" (click)="increaseQuantity(cartItem)">
+          </div> 
+        </div>       
+      </ion-col>
+      <ion-col size="3" class="price-delete text-right">
+        <div class="price">${{cartCalculationArray[i].product_to | number:'1.2-2'}}</div>
+        <ion-icon name="trash-outline" (click)="removeCartItem(cartItem.id,cartCalculationArray[i].product_to)"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid><!--WILL APPEAR WHEN CART NOT EMPTY-->
+  <ion-grid class="total-div" *ngIf="productDetailInCartArray.length == 0 && isCartEmpty == true">
+    <ion-row>
+      <ion-col size="12" class="price ion-text-center">
+        <h6>Your cart is empty!</h6>          
+      </ion-col>        
+    </ion-row>
+  </ion-grid><!--WHEN CART IS EMPTY-->
+  <ion-grid class="btns">
+    <ion-button *ngIf="productDetailInCartArray.length > 0" class="checkout-btn button" (click)="goToCheckoutPage()">Proceed to Checkout</ion-button>
+  </ion-grid>
+</ion-content>

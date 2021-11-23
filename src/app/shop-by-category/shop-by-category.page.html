@@ -1,0 +1,46 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="start" (click)="goBack()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <!--<ion-buttons slot="start">
+      <ion-menu-button><img src="../../assets/images/menu-icon1.svg"></ion-menu-button>
+    </ion-buttons>-->
+    <ion-title class="ion-text-center">
+      <h2 [innerHTML]="ProductCategoryDetail.name"></h2>
+      <!--<ion-img src="../../assets/images/farhat-sweets.png"></ion-img>-->
+    </ion-title>
+    <ion-chip slot="end">
+      <ion-label [ngClass]="{'show-red-dot' : num_of_items_in_cart > 0}">{{num_of_items_in_cart}}</ion-label>
+      <!-- <ion-icon :icon="bag"></ion-icon>  -->  
+      <img src="../../assets/images/cart-bag-icon1.png">
+    </ion-chip>
+  </ion-toolbar>
+</ion-header>
+<ion-content>  
+  <!--<div class="sub-banner">
+		<ion-img src="{{categoryImage}}" *ngIf="categoryImage != ''"></ion-img>
+		<ion-img src="../../assets/images/icon.png" *ngIf="categoryImage == ''"></ion-img>    
+	</div>
+  <h1 [innerHTML]="ProductCategoryDetail.name"></h1>-->
+  <ion-item class="error-message" lines="none" *ngIf="ProductsWithinCategory == 0">Awaiting products...</ion-item>
+  <ion-grid class="best-selling" *ngIf="ProductsWithinCategory.length > 0">		        
+    <ion-row class="product-list-main">
+      <ion-col class="product-main-box" *ngFor="let product of ProductsWithinCategory;let i=index;">
+        <ion-grid (click)="showProductDetail(product.id)">            
+          <ion-row>
+            <ion-col>
+              <ion-img *ngIf="product.images.length > 0" [src]="product.images[0].src" (ionImgWillLoad)="imageNotLoaded(i)" (ionImgDidLoad)="imageLoaded(i)" [ngClass]="{'lazy-me' : arrayImageLoaded[i] == false}"></ion-img>
+              <!--<img src="../assets/SPAR-logo.jpg" *ngIf="product.images.length==0">-->
+              <h6 class="product-name" [innerHTML]="product.name"></h6>
+              <div class="product-price" [innerHTML]="product.price_html" *ngIf="product.price_html!=''"></div>                
+              <div class="product-price price-error-message" *ngIf="product.price_html==''">stop by the store for pricing</div>
+              <div class="product-price" *ngIf="product.stock_status=='outofstock'">OUT OF STOCK</div>
+            </ion-col>          
+          </ion-row>          
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid><!--WILL APPEAR WHEN POPULAR PRODUCT FOUND DYNAMICALLY-->
+  <button *ngIf="ProductsWithinCategory.length > 4 && currentPage < totalNumberOfPages" class="uppercase view-all-popular-pro button button-md button-default button-default-md" ion-button="" type="" (click)="loadMoreProducts()">load more</button>
+</ion-content>

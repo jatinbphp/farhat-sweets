@@ -1,0 +1,267 @@
+ion-header {
+    /*border-bottom: 1px solid #f6f6f6;*/
+    border-bottom: 1px solid #ebebeb;
+    width: 97%;
+    margin: 0px auto;
+}
+ion-content {
+	h1{
+		font-family: var(--font-Poppins-SemiBold);
+        color:var(--h1-color);
+        font-size:25px;
+        font-weight: 600;
+        text-align: center;
+        padding:10px;
+        position: relative;
+    }
+    h1:before {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        width: 50px;
+        height: 2px;
+        background: var(--h1-color-before);
+        transition: 0.3s;
+    }
+	.registration-form {
+		/*padding: 52px 0px 0px;*/
+		form {
+			width: 100%;
+			ion-item{
+				&.checkbox-item{
+					ion-checkbox{
+						padding: 0;
+    					margin: 0px 5px 0 10px;
+					}
+					ion-label{
+						font-size:17px;
+						font-weight: 500;
+						font-family: var(--font-Poppins-SemiBold);
+        				color:var(--h1-color);
+					}
+				}
+			}
+			ion-grid {
+				padding: 15px;
+				ion-row{
+					padding-bottom: 15px;
+					/*margin: 0px 0px 20px;*/
+					ion-col {						
+						ion-label {
+							&.checkout-sub-title{
+								color:var(--h1-color);
+							}
+							font-family: var(--font-NeueHaasUnica-Bold);
+							width: 100%;
+							text-transform: capitalize;
+							color: #000;
+							font-weight: 600;
+							font-size: 24px;
+							line-height: 26px;
+							text-align: left;
+							margin: 0px 0px 15px;
+						}
+						ion-input {
+							font-family: var(--font-NeueHaasUnica-Regular);
+							/*font-family: var(--font-Poppins-Reguler);*/
+							width: 100%;
+							height: 54px;
+							border: 1px solid #e5e5e5;
+							background-color: #fdfdfd;
+							--background: #fdfdfd;
+							border-radius: 5px;
+							font-size: 16px;
+							text-align: left;
+							color: rgba(0,0,0);
+							--placeholder-color: rgba(0,0,0,0.5);
+							--placeholder-opacity: !important;
+							padding: 8px 18px !important;
+							--padding-bottom: 0px;
+							--padding-top: 0px;
+							--padding-start: 0px;
+							--padding-end: 0px;
+							&.has-focus {
+								border-color: #ddd;
+							}
+							&.has-value {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+
+							ion-input:-webkit-autofill {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+						}
+						ion-textarea {
+							font-family: var(--font-Poppins-Reguler);
+							width: 100%;
+							border: 1px solid #e5e5e5;
+							background-color: #fdfdfd;
+							--background: #fdfdfd;
+							border-radius: 5px;
+							font-size: 16px;
+							text-align: left;
+							color: rgba(0,0,0);
+							--placeholder-color: rgba(0,0,0,0.5);
+							--placeholder-opacity: !important;
+							padding: 8px 18px !important;
+							--padding-bottom: 0px;
+							--padding-top: 0px;
+							--padding-start: 0px;
+							--padding-end: 0px;
+							&.has-focus {
+								border-color: #ddd;
+							}
+							&.has-value {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+
+							ion-input:-webkit-autofill {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+						}
+						ion-select {
+							font-family: var(--font-Poppins-Reguler);
+							width: 100%;
+							height: 54px;
+							border: 1px solid #e5e5e5;
+							background-color: #fdfdfd;
+							--background: #fdfdfd;
+							border-radius: 5px;
+							font-size: 16px;
+							text-align: left;
+							color: rgba(0,0,0);
+							--placeholder-color: rgba(0,0,0,0.5);
+							--placeholder-opacity: !important;
+							padding: 8px 18px !important;
+							--padding-bottom: 0px;
+							--padding-top: 0px;
+							--padding-start: 0px;
+							--padding-end: 0px;
+							&.has-focus {
+								border-color: #ddd;
+							}
+							&.has-value {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+
+							ion-input:-webkit-autofill {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+						}
+						ion-icon {
+							&.passwordIcon{
+							position: absolute;
+							top: 45px;
+							right: 14px;
+							z-index: 2;
+							color: #000;
+							font-size:25px;
+						}
+						}							
+					}
+				}
+			}
+			ion-list{
+				&.ups-billing{
+					padding: 0;
+    				margin: 20px;
+    				border: 5px solid #ebebeb;
+    				border-radius: 20px;
+					.color-like-h1{
+						color:var(--h1-color);
+					}
+					.ups-billing-header{					
+						font-family: var(--font-Poppins-SemiBold);
+						font-size:16px;
+						font-weight: 500;
+					}
+					ion-item{
+						ion-label{
+							font-family: var(--font-Poppins-Reguler);
+							font-size:15px;
+							font-weight: 600;
+						}
+						ion-radio-group{
+							
+							ion-radio{
+								margin:0 5px 0 -15px;
+							}
+							ion-label{
+								font-family: var(--font-Poppins-Reguler);
+								font-size:15px;
+								font-weight: 500;
+							}
+						}						
+					}
+				}
+				&.order-summary{
+					padding: 0;
+    				margin: 20px;
+    				border: 5px solid #ebebeb;
+    				border-radius: 20px;
+					
+					ion-item{
+						ion-label{
+							font-family: var(--font-Poppins-Reguler);
+							font-size:15px;
+							font-weight: 500;
+							&.color-like-h1{
+								color:var(--h1-color);
+								font-weight: 600;
+							}
+						}
+						ion-button {
+							font-family: var(--font-Poppins-SemiBold);
+							width: 100%;
+							height:30px;
+							border-radius: 5px;
+							--border-radius: 5px;
+							margin-bottom: 20px;
+						}
+					}
+				}
+			}			
+			
+			ion-button {
+				&.place-order{
+				font-family: var(--font-Poppins-SemiBold);
+				width: 100%;
+		    	height: 55px;
+		    	border-radius: 5px;
+		    	--border-radius: 5px;
+		    	font-size: 16px;
+		    	font-weight: 700;
+		    	background: #75313f !important;
+		    	--background: #75313f !important;
+		    	color: #fff;
+		    	margin: 0 0 20px 0;
+				}
+			}
+		}
+		ion-grid{
+			&.other-options{
+				font-family: var(--font-Poppins-Reguler);
+				padding:0;
+				margin: 15px;
+			}			
+		}
+	}
+}

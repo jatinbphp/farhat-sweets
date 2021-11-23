@@ -1,0 +1,454 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>
+    <!--<ion-chip slot="end">
+      <ion-label>3</ion-label>
+      <ion-icon :icon="bag"></ion-icon>      
+    </ion-chip>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center">Checkout</h1>
+  <div class="registration-form">  
+    <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder(checkoutForm.value)">
+      <ion-grid *ngIf="objOrderArray.length == 0">
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="checkout-sub-title">BILLING DETAILS</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">First name</ion-label>
+            <ion-input type="text" formControlName="billing_first_name"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_first_name">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_first_name').hasError(validation.type) && (checkoutForm.get('billing_first_name').dirty || checkoutForm.get('billing_first_name').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Last name</ion-label>
+            <ion-input type="text" formControlName="billing_last_name"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_last_name">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_last_name').hasError(validation.type) && (checkoutForm.get('billing_last_name').dirty || checkoutForm.get('billing_last_name').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Company name</ion-label>
+            <ion-input type="text" formControlName="billing_company"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_company">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_company').hasError(validation.type) && (checkoutForm.get('billing_company').dirty || checkoutForm.get('billing_company').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Country / Region</ion-label>
+            <ion-input type="text" formControlName="billing_country" readonly="true"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_country">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_country').hasError(validation.type) && (checkoutForm.get('billing_country').dirty || checkoutForm.get('billing_country').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Address</ion-label>
+            <ion-input type="text" formControlName="billing_address_1"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_address_1">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_address_1').hasError(validation.type) && (checkoutForm.get('billing_address_1').dirty || checkoutForm.get('billing_address_1').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Town / City</ion-label>
+            <ion-input type="text" formControlName="billing_city"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_city">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_city').hasError(validation.type) && (checkoutForm.get('billing_city').dirty || checkoutForm.get('billing_city').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">ZIP Code</ion-label>
+            <ion-input type="text" formControlName="billing_postcode"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_postcode">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_postcode').hasError(validation.type) && (checkoutForm.get('billing_postcode').dirty || checkoutForm.get('billing_postcode').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">State</ion-label>
+            <ion-select formControlName="billing_state" (ionChange)="selectedState($event)">
+              <ion-select-option *ngFor="let state of checkoutStatesArray | keyvalue;" value="{{state.key}}">{{state.value}}</ion-select-option>
+            </ion-select>
+            <!--<ion-input type="text" formControlName="billing_state"></ion-input>-->
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_state">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_state').hasError(validation.type) && (checkoutForm.get('billing_state').dirty || checkoutForm.get('billing_state').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>        
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Phone</ion-label>
+            <ion-input type="text" formControlName="billing_phone"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_phone">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_phone').hasError(validation.type) && (checkoutForm.get('billing_phone').dirty || checkoutForm.get('billing_phone').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Email address</ion-label>
+            <ion-input type="email" formControlName="billing_email"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.billing_email">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('billing_email').hasError(validation.type) && (checkoutForm.get('billing_email').dirty || checkoutForm.get('billing_email').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Order notes</ion-label>            
+            <ion-textarea rows="5" formControlName="billing_order_notes"></ion-textarea>
+          </ion-col>                   
+        </ion-row>
+      </ion-grid>
+      <ion-item class="checkbox-item" lines="none" (click)="show_hide_shipping()" *ngIf="objOrderArray.length == 0">
+        <ion-label>Ship to a different address?</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="shipping_to_different_address" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+      </ion-item>
+      <ion-grid *ngIf="this.shipping_to_different_address == true && objOrderArray.length == 0">
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="checkout-sub-title">SHIPPING DETAILS</ion-label>
+          </ion-col>
+        </ion-row>                
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">First name</ion-label>
+            <ion-input type="text" formControlName="shipping_first_name"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_first_name">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_first_name').hasError(validation.type) && (checkoutForm.get('shipping_first_name').dirty || checkoutForm.get('shipping_first_name').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Last name</ion-label>
+            <ion-input type="text" formControlName="shipping_last_name"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_last_name">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_last_name').hasError(validation.type) && (checkoutForm.get('shipping_last_name').dirty || checkoutForm.get('shipping_last_name').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Company name</ion-label>
+            <ion-input type="text" formControlName="shipping_company"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_company">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_company').hasError(validation.type) && (checkoutForm.get('shipping_company').dirty || checkoutForm.get('shipping_company').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Country / Region</ion-label>
+            <ion-input type="text" formControlName="shipping_country" readonly="true"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_country">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_country').hasError(validation.type) && (checkoutForm.get('shipping_country').dirty || checkoutForm.get('shipping_country').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Address</ion-label>
+            <ion-input type="text" formControlName="shipping_address_1"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_address_1">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_address_1').hasError(validation.type) && (checkoutForm.get('shipping_address_1').dirty || checkoutForm.get('shipping_address_1').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Town / City</ion-label>
+            <ion-input type="text" formControlName="shipping_city"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_city">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_city').hasError(validation.type) && (checkoutForm.get('shipping_city').dirty || checkoutForm.get('shipping_city').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">ZIP Code</ion-label>
+            <ion-input type="text" formControlName="shipping_postcode"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_postcode">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_postcode').hasError(validation.type) && (checkoutForm.get('shipping_postcode').dirty || checkoutForm.get('shipping_postcode').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">State</ion-label>
+            <ion-select formControlName="shipping_state">
+              <ion-select-option *ngFor="let state of checkoutStatesArray | keyvalue;" value="{{state.key}}">{{state.value}}</ion-select-option>
+            </ion-select>
+            <!--<ion-input type="text" formControlName="shipping_state"></ion-input>-->
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_state">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_state').hasError(validation.type) && (checkoutForm.get('shipping_state').dirty || checkoutForm.get('shipping_state').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>        
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Phone</ion-label>
+            <ion-input type="text" formControlName="shipping_phone"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_phone">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_phone').hasError(validation.type) && (checkoutForm.get('shipping_phone').dirty || checkoutForm.get('shipping_phone').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Email address</ion-label>
+            <ion-input type="email" formControlName="shipping_email"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.shipping_email">
+              <div class="error-message"
+                *ngIf="checkoutForm.get('shipping_email').hasError(validation.type) && (checkoutForm.get('shipping_email').dirty || checkoutForm.get('shipping_email').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>                 
+      </ion-grid>
+      <!--UPS SHIPPING OPTIONS-->
+      <ion-list class="ups-billing" *ngIf="objOrderArray.length == 0">        
+        <ion-item>
+          <ion-label class="color-like-h1">CART TOTALS</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Subtotal</ion-label>
+          <ion-label slot="end">${{cartTotal | number:'1.2-2'}}</ion-label>
+        </ion-item>
+        <ion-list-header class="ups-billing-header">*Shipping</ion-list-header>
+        <ion-item>
+          <ion-radio-group value="{{UPSShippingOptionsSelectedID}}" (ionChange)="upsMethodSelected($event)">
+            <ion-item lines="none" *ngFor="let ups_shipping_options of UPSShippingOptions | keyvalue">
+              <ion-label>{{ups_shipping_options.value.label}}&nbsp;:&nbsp;${{ups_shipping_options.value.cost}}</ion-label>
+              <ion-radio slot="start" value="{{ups_shipping_options.value.id}}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start" class="color-like-h1">Total</ion-label>
+          <ion-label slot="end" class="color-like-h1">${{cartTotalWithUPS | number:'1.2-2'}}</ion-label>
+        </ion-item>
+      </ion-list>
+      <!--UPS SHIPPING OPTIONS-->
+      <!--COUPON AREA-->      
+      <ion-list class="order-summary" *ngIf="objOrderArray.length > 0">
+        <ion-item>
+          <ion-label class="color-like-h1">ORDER SUMMERY</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start">Order date</ion-label>
+          <ion-label slot="end">{{objOrderArray[0].date_created | date: 'dd/MM/YYYY'}}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start">Order status</ion-label>
+          <ion-label slot="end">{{objOrderArray[0].status}}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start">Order number</ion-label>
+          <ion-label slot="end">{{objOrderArray[0].id}}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label slot="start">Order total</ion-label>
+          <ion-label slot="end">{{objOrderArray[0].currency_symbol}}{{objOrderArray[0].total}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="color-like-h1">Coupon</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input type="text" placeholder="Coupon code" formControlName="coupon_code"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button color="light" (click)="validateCoupon(checkoutForm.value)">Apply coupon</ion-button>
+        </ion-item>
+      </ion-list>
+      <!--COUPON AREA-->
+      <ion-item lines="none">
+        <ion-button class="place-order" type="submit" color="" [disabled]="!checkoutForm.valid" *ngIf="objOrderArray.length == 0">PLACE ORDER</ion-button>
+        <ion-button class="place-order" *ngIf="objOrderArray.length > 0" (click)="payNow()">PAY NOW</ion-button>
+      </ion-item>
+    </form>    
+  </div>
+</ion-content>

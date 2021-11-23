@@ -1,0 +1,36 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>home-tabs</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <img src="../assets/images/home-icon1.svg" alt="home">
+        <ion-label>Home</ion-label>
+      </ion-tab-button>  
+      <ion-tab-button tab="shop">
+        <img src="../assets/images/search-icon1.svg" alt="search">
+        <ion-label>Shop</ion-label>
+      </ion-tab-button>
+      <!--<ion-tab-button tab="wishlist">
+        <img src="../assets/images/wishlist-icon1.svg" alt="wishlist">
+        <ion-label>WishList</ion-label>
+      </ion-tab-button>-->
+      <ion-tab-button tab="cart">
+        <img src="../assets/images/cart-bag-icon1.png" alt="cart">
+        <ion-label>Cart</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="CheskIsLoggedIn()">
+        <img src="../assets/images/user-icon1.svg" alt="user">
+        <ion-label>Me</ion-label>
+      </ion-tab-button>
+      <!--<ion-tab-button tab="account">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Me</ion-label>
+      </ion-tab-button>-->
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

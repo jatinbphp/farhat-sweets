@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8.681" height="14.963" viewBox="0 0 8.681 14.963">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 1.66px;
+      }
+    </style>
+  </defs>
+  <g id="arrow-right" transform="matrix(0.999, 0.035, -0.035, 0.999, 1.645, 1.214)">
+    <path id="Path" class="cls-1" d="M0,0,6.17,6.17,0,12.339" transform="translate(0 0)"/>
+  </g>
+</svg>

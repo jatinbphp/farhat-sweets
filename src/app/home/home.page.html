@@ -1,0 +1,66 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>      
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>
+    <ion-chip slot="end">
+      <ion-label [ngClass]="{'show-red-dot' : num_of_items_in_cart > 0}">{{num_of_items_in_cart}}</ion-label>
+      <!--<ion-icon :icon="bag"></ion-icon>-->
+      <img src="../../assets/images/cart-bag-icon1.png">
+    </ion-chip>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--REFRESHER-->	
+	<ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Please wait..."></ion-refresher-content>
+	</ion-refresher>
+	<!--REFRESHER-->
+  <!--<div class="bck-shap"></div>-->
+  <ion-slides pager="true" class="banner-slider">
+    <ion-slide>
+      <ion-img src="../../assets/images/slider-main.jpg"></ion-img>      
+    </ion-slide>
+  </ion-slides>
+  <h1>categories <ion-router-link href="/shop" class="">show all</ion-router-link></h1>    
+  <ion-grid class="product-categories">
+    <ion-row>
+      <ion-col class="product-box" *ngFor="let categories of ProductCategories; let i = index;" (click)="shopByCategory(categories.id)">
+        <div *ngIf="categories.name!=''">
+          <ion-icon name="camera" *ngIf="categories.image==null"></ion-icon>
+          <ion-img src="{{categories.image.src}}" *ngIf="categories.image!=null && categories.image.src!=''"></ion-img>
+          <ion-label class="product-name" [innerHTML]="categories.name"></ion-label>
+        </div>
+      </ion-col>      
+    </ion-row>
+  </ion-grid>
+  <h1>best selling desserts</h1>
+  <ion-item class="error-message" lines="none" *ngIf="allBestSeellingProductsLength == 0">Awaiting best selling desserts</ion-item>
+  <!--BEST SELLING PRODUCTS-->  
+  <ion-grid class="best-selling" *ngIf="allBestSeellingProductsLength > 0">		        
+    <ion-row class="product-list-main">
+      <ion-col class="product-main-box" *ngFor="let product of allBestSeellingProducts;let i=index;">
+        <ion-grid (click)="showProductDetail(product.id)">            
+          <ion-row>
+            <ion-col>
+              <ion-img class="pro-img-sec" *ngIf="product.images.length > 0" [src]="product.images[0].src" (ionImgWillLoad)="imageNotLoaded(i)" (ionImgDidLoad)="imageLoaded(i)" [ngClass]="{'lazy-me' : arrayImageLoaded[i] == false}"></ion-img>
+              <!--<img src="../assets/SPAR-logo.jpg" *ngIf="product.images.length==0">-->
+              <h6 class="product-category">{{ product.categories[0].name }}</h6>
+              <h6 class="product-name">{{ product.name }}</h6>
+              <div class="product-price" [innerHTML]="product.price_html"></div>                
+              <div class="product-price" *ngIf="product.stock_status=='outofstock'">OUT OF STOCK</div>
+            </ion-col>          
+          </ion-row>          
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid><!--WILL APPEAR WHEN POPULAR PRODUCT FOUND DYNAMICALLY-->
+  <button *ngIf="allBestSeellingProductsLength > 49 && currentPage < totalNumberOfPages" class="uppercase view-all-popular-pro button button-md button-default button-default-md" ion-button="" type="" (click)="loadMoreProducts()">Load More</button>
+  <!--BEST SELLING PRODUCTS-->
+</ion-content>

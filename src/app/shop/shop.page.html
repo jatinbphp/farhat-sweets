@@ -1,0 +1,91 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>      
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>
+    <ion-chip slot="end">
+      <ion-label [ngClass]="{'show-red-dot' : num_of_items_in_cart > 0}">{{num_of_items_in_cart}}</ion-label>
+      <!--<ion-icon :icon="bag"></ion-icon>-->
+      <img src="../../assets/images/cart-bag-icon1.png">
+    </ion-chip>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--REFRESHER-->	
+	<ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Please wait..."></ion-refresher-content>
+	</ion-refresher>
+	<!--REFRESHER-->
+  <ion-list class="search-box">
+    <ion-item lines="none">
+      <ion-searchbar (ionInput)="onSearchChange($event)" (ionCancel)="cancelSearch()" (ionClear)="cancelSearch()" [(ngModel)]="productSelected.post_title" placeholder="Search Now"></ion-searchbar>
+    </ion-item>
+    <ion-item *ngIf="resultsAvailable==true" lines="none">
+      <ion-list class="search-box-result">
+        <ion-item *ngFor="let result of results" (click)="productSelectedAutoComplete(result)" lines="none">
+          <ion-label text-wrap>{{result.post_title}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-list>
+  <ion-list class="promo-sec">
+    <ion-item class="promo-bck-img" lines="none">
+      <img src="../../assets/images/promo--bck-img1.png" alt="img">
+    </ion-item>
+    <ion-item class="promo-txt" lines="none">
+      <h5>Upto 40% off on birthday cakes</h5>
+    </ion-item>
+  </ion-list>
+  <!--PARENT CATEGORY ONLY-->
+  <ion-grid class="category-main">
+    <ion-row *ngFor="let categories of ProductCategories;let i = index;">
+      <ion-col class="category-image">
+        <ion-img src="{{categories.image.src}}" *ngIf="categories.image.src!=''"></ion-img>
+        <ion-img src="../../assets/images/icon.png" *ngIf="categories.image.src==''"></ion-img>
+      </ion-col>
+      <ion-col class="category-name">
+        <ion-item [innerHTML]="categories.name" lines="none" (click)="shopByCategory(categories.id,0)" *ngIf="categories.display=='default'"></ion-item>
+        <ion-item [innerHTML]="categories.name" lines="none" (click)="showSubCategories(categories.id)" *ngIf="categories.display=='subcategories'"></ion-item>
+        <span class="category-count">{{categories.count}} Products</span>
+      </ion-col>   
+      <ion-col class="category-arw">
+        <img src="../../assets/images/left-arrow1.svg" alt="arrow" (click)="shopByCategory(categories.id,0)" *ngIf="categories.display=='default'">
+        <img src="../../assets/images/left-arrow1.svg" alt="arrow" (click)="showSubCategories(categories.id)" *ngIf="categories.display=='subcategories'">
+      </ion-col>   
+    </ion-row>
+  </ion-grid>
+  <!--PARENT CATEGORY ONLY-->
+  <!--WORKING::NESTED CATEGORIES LIST-->
+  <!--<ion-grid class="category-main">
+    <ion-row *ngFor="let categories of ProductNestedCategories;let i = index;">
+      <ion-col class="category-image">
+        <ion-img src="{{categories.thumb}}" *ngIf="categories.thumb!=''"></ion-img>
+        <ion-img src="../../assets/images/icon.png" *ngIf="categories.thumb==''"></ion-img>
+      </ion-col>
+      <ion-col class="category-name">
+        <ion-item [innerHTML]="categories.title" lines="none" (click)="shopByCategory(categories.ID,0)"></ion-item>
+        <ion-item lines="none">{{categories.count}} Products</ion-item>
+        <ion-grid class="category-sub" *ngIf="categories.children.length > 0">
+          <ion-row *ngFor="let subCategories of categories.children; let s = index;">
+            <ion-col class="sub-category-image">
+              <ion-img src="{{subCategories.thumb}}" *ngIf="subCategories.thumb!=''"></ion-img>
+              <ion-img src="../../assets/images/icon.png" *ngIf="categories.thumb==''"></ion-img>
+            </ion-col>
+            <ion-col class="sub-category-name">
+              <ion-item [innerHTML]="subCategories.title" lines="none" (click)="shopByCategory(categories.ID,subCategories.ID)"></ion-item>
+              <ion-item lines="none">{{subCategories.count}} Products</ion-item>
+            </ion-col>            
+          </ion-row>
+        </ion-grid>
+      </ion-col>   
+      <ion-col class="category-arw"><img src="../../assets/images/left-arrow1.svg" alt="arrow" (click)="shopByCategory(categories.ID,0)"></ion-col>   
+    </ion-row>
+  </ion-grid>-->
+  <!--WORKING::NESTED CATEGORIES LIST-->
+</ion-content>

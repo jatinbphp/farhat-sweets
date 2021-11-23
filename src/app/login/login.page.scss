@@ -1,0 +1,237 @@
+ion-header {
+    /*border-bottom: 1px solid #f6f6f6;*/
+    border-bottom: 1px solid #ebebeb;
+    width: 97%;
+    margin: 0px auto;
+	ion-title {
+        h2 {
+            font-family: var(--font-Poppins-SemiBold);
+            color:var(--color);
+            font-size: 22px;
+            line-height: 24px;
+            margin: 0px;
+            text-transform: capitalize;
+        }
+        h6 {
+            font-family: var(--font-NeueHaasUnica-Regular);
+            color:var(--color);
+            font-size: 16px;
+            line-height: 18px;
+            margin: 0px;
+        }
+    }
+}
+ion-content {
+	h1{
+        color:var(--h1-color);
+        font-size:25px;
+        font-weight: 600;
+        text-align: center;
+        padding:10px;
+        position: relative;
+    }
+    h1:before {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        width: 50px;
+        height: 2px;
+        background: var(--h1-color-before);
+        transition: 0.3s;
+    }
+	.login-form {
+		/*padding: 52px 0px 0px;*/
+		max-width: 600px;
+	    width: 100%;
+	    margin: 0px auto;
+		padding: 20px 0px 50px;
+		form {
+			width: 100%;
+			ion-grid {
+				padding: 15px;
+				ion-row{
+					/*margin: 0px 0px 20px;*/
+					ion-col {						
+						ion-label {
+							display: flex;
+							font-family: var(--font-NeueHaasUnica-Bold);
+							width: 100%;
+							text-transform: capitalize;
+							color: #000;
+							font-weight: 600;
+							font-size: 24px;
+							line-height: 26px;
+							text-align: left;
+							margin: 0px 0px 15px;
+						}
+						ion-input {
+							width: 100%;
+							height: 54px;
+							border: 1px solid #e5e5e5;
+							background-color: #fdfdfd;
+							--background: #fdfdfd;
+							border-radius: 5px;
+							font-size: 16px;
+							text-align: left;
+							font-family: var(--font-NeueHaasUnica-Regular);
+							color: rgba(0,0,0);
+							--placeholder-color: rgba(0,0,0,0.5);
+							--placeholder-opacity: !important;
+							padding: 8px 18px !important;
+							--padding-bottom: 0px;
+							--padding-top: 0px;
+							--padding-start: 0px;
+							--padding-end: 0px;
+							box-shadow: 0px 3px 5px rgba(4,7,7,0.02);
+							&.has-focus {
+								border-color: #ddd;
+							}
+							&.has-value {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+
+							ion-input:-webkit-autofill {
+								--ion-background-color:#fdfdfd;
+								--background-color: #fdfdfd;
+								background-color: #fdfdfd;
+								--background: #fdfdfd;
+							}
+						}
+						ion-icon {
+							&.passwordIcon{
+							position: absolute;
+							top: 50px;
+							right: 14px;
+							z-index: 2;
+							color: #000;
+							font-size:25px;
+						}
+						}							
+					}
+				}
+			}
+			ion-item {
+				--padding-start: 0;
+    			--inner-padding-end: 0;
+    			--border-width: 0;
+    			--border-color: transparent;
+			}
+			ion-button {
+				width: calc(100% - 30px);
+		    	height: 55px;
+		    	border-radius: 5px;
+		    	--border-radius: 5px;
+		    	font-family: var(--font-Poppins-SemiBold);
+		    	font-size: 20px;
+		    	background: #75313f !important;
+		    	--background: #75313f !important;
+		    	border: 2px solid #6f3739;
+		    	color: #fff;
+		    	margin: 0px auto;
+		    	text-transform: capitalize;
+		    	--background-hover: #75313f;
+		    	--background-activated: #75313f;
+				--background-focused: #75313f;
+		    	&.border-btn {
+		    		background: transparent !important;
+			    	--background: transparent !important;
+			    	color: #75313f;
+			    	--background-hover: #fff;
+			    	--background-activated: #fff;
+					--background-focused: #fff;
+		    	}
+			}
+		}
+		ion-grid{
+			&.other-options{
+				padding: 15px;
+				// margin: 15px;
+				ion-button {
+					width: 100%;
+			    	height: 55px;
+			    	border-radius: 5px;
+			    	--border-radius: 5px;
+			    	font-family: var(--font-Poppins-SemiBold);
+			    	font-size: 20px;
+			    	--background: #75313f;
+			    	border: 2px solid #6f3739;
+			    	color: #fff;
+			    	margin: 0px auto;
+			    	text-transform: capitalize;
+			    	--background-hover: #75313f;
+			    	--background-activated: #75313f;
+					--background-focused: #75313f;
+			    	&.border-btn {
+				    	--background: transparent;
+				    	color: #75313f;
+				    	--background-hover: #fff;
+				    	--background-activated: #fff;
+						--background-focused: #fff;
+			    	}
+				}
+				.txt-link {
+					font-family: var(--font-NeueHaasUnica-Regular);
+					color: #6f373a;
+					margin: 6px 0px;
+				}
+				.or-txt {
+					font-family: var(--font-NeueHaasUnica-Bold);
+		            color: #000;
+		            font-size: 20px;
+		            line-height: normal;
+		            text-transform: uppercase;
+		            position: relative;
+		            margin-top: 16px;
+		            &:before {
+		            	position: absolute;
+		            	content: '';
+		            	top: 0px;
+		            	bottom: 0px;
+		            	left: 0px;
+		            	margin: auto;
+		            	width: 44%;
+		            	height: 1px;
+		            	background-color: #d6d6d6;
+		            }
+		            &:after {
+		            	position: absolute;
+		            	content: '';
+		            	top: 0px;
+		            	bottom: 0px;
+		            	right: 0px;
+		            	margin: auto;
+		            	width: 44%;
+		            	height: 1px;
+		            	background-color: #d6d6d6;
+		            }
+				}
+				.social-btn-list {
+					margin-bottom: 50px;
+					ion-button {
+						--background: transparent;
+						--color: transparent;
+						--padding-start: 0;
+					    --padding-end: 0;
+					    --border-radius: 0px;
+					    margin: 0px 10px !important;
+					    height: fit-content;
+					    width: fit-content;
+					    border: 0px;
+					    text-transform: capitalize;
+					    --background-hover: transparent;
+				    	--background-activated: transparent;
+	    				--background-focused: transparent;
+						img {
+							width: 26px;
+							height: 26px;
+							object-fit: contain;
+						}
+					}
+				}
+			}
+		}
+	}
+}

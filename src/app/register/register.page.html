@@ -1,0 +1,146 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      <h2>Register</h2>
+    </ion-title>
+    <!--<ion-chip slot="end">
+      <ion-label>3</ion-label>
+      <ion-icon :icon="bag"></ion-icon>      
+    </ion-chip>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--<h1 class="ion-text-center">Register</h1>-->
+  <div class="registration-form">  
+    <form [formGroup]="registerForm" (ngSubmit)="makeMeLoggedin(registerForm.value)">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">First Name</ion-label>
+            <ion-input type="text" formControlName="first_name"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.first_name">
+              <div class="error-message"
+                *ngIf="registerForm.get('first_name').hasError(validation.type) && (registerForm.get('first_name').dirty || registerForm.get('first_name').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Last Name</ion-label>
+            <ion-input type="text" formControlName="last_name"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.last_name">
+              <div class="error-message"
+                *ngIf="registerForm.get('last_name').hasError(validation.type) && (registerForm.get('last_name').dirty || registerForm.get('last_name').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message"
+                *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>        
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Username</ion-label>
+            <ion-input type="text" formControlName="username"></ion-input>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.username">
+              <div class="error-message"
+                *ngIf="registerForm.get('username').hasError(validation.type) && (registerForm.get('username').dirty || registerForm.get('username').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>        
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">password</ion-label>
+            <ion-input [type]="passwordType" formControlName="password"></ion-input>
+            <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message"
+                *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>        
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Confirm password</ion-label>
+            <ion-input [type]="ConfirmPasswordType" formControlName="cpassword"></ion-input>
+            <ion-icon item-end [name]="ConfirmPasswordIcon" class="passwordIcon" (click)='hideShowConfirmPassword()'></ion-icon>
+          </ion-col>
+          <!--VALIDATION-->
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.cpassword">
+              <div class="error-message"
+                *ngIf="registerForm.get('cpassword').hasError(validation.type) && (registerForm.get('cpassword').dirty || registerForm.get('cpassword').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <!--VALIDATION-->          
+        </ion-row>                
+      </ion-grid>
+      <ion-grid class="terms-options">
+        <ion-row>
+          <ion-col size="1">
+            <ion-checkbox (ionChange)="acceptTerms($event)" [(ngModel)]="accept_tems" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+          </ion-col>        
+          <ion-col size="11" class="ion-text-left" (click)="redirectTo('https://farhatsweets.com/privacy-policy/')">I agree to the <strong>Terms of service</strong></ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item lines="none">
+        <ion-button type="submit" color="" [disabled]="!registerForm.valid || accept_tems != true">Sign Up</ion-button>
+      </ion-item>
+    </form>
+    <ion-grid class="other-options">
+      <ion-row>        
+        <ion-col size="12" class="ion-text-center" routerDirection="root" routerLink="/login">Already have an account? <strong>Login</strong></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

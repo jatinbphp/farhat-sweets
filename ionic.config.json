@@ -1,0 +1,7 @@
+{
+  "name": "farhat-sweets",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

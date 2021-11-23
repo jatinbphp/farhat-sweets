@@ -1,0 +1,43 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>
+    <!--<ion-chip slot="end">
+      <ion-label>3</ion-label>
+      <ion-icon :icon="bag"></ion-icon>      
+    </ion-chip>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ord-list">
+  <ion-grid *ngIf="myOrders.length == 0">
+    <ion-row>
+      <ion-col size="12" class="price ion-text-center">
+        <h6>Your have no orders!</h6>          
+      </ion-col>        
+    </ion-row>
+  </ion-grid><!--WHEN CART IS EMPTY-->
+  <ion-grid *ngIf="myOrders.length > 0">
+    <ion-row class="add-pro-item" *ngFor="let orders of myOrders; let i = index;">      
+      <ion-col size="9" class="pro-info">
+        <ion-thumbnail>
+          <ion-img src="../../assets/images/icon.png"></ion-img>
+        </ion-thumbnail>
+        <div class="pro-info-in">         
+          <div><label>Order No.:</label> {{orders.id}}</div>
+          <div><label>Date:</label> {{orders.date_created | date: 'dd/MM/YYYY'}}<!--22/04/2021--></div>
+          <div><label>Status:</label> {{orders.status}}</div>
+        </div>       
+      </ion-col>
+      <ion-col size="3" class="price text-right">         
+        {{orders.line_items.length}} items <br />${{orders.total}} <br /><button class="view-btn" (click)="ShowOrderDetails(orders.id)">View All</button>    
+      </ion-col>
+    </ion-row>    
+  </ion-grid><!--WHEN ORDERS FOUND-->
+</ion-content>

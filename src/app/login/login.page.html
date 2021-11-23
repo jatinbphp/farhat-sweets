@@ -1,0 +1,89 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>      
+    </ion-buttons>
+    <!-- <ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>
+    <ion-chip slot="end">
+      <ion-label>3</ion-label>
+      <ion-icon :icon="bag"></ion-icon> 
+      <img src="../../assets/images/cart-bag-icon1.png">   
+    </ion-chip> -->
+    <ion-title class="ion-text-center">
+      <h2>Login</h2>      
+    </ion-title>
+    <ion-chip slot="end">
+      <ion-label [ngClass]="{'show-red-dot' : num_of_items_in_cart > 0}">{{num_of_items_in_cart}}</ion-label>
+      <img src="../../assets/images/cart-bag-icon1.png">
+    </ion-chip>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!--<h1 class="ion-text-center">Login</h1>-->
+  <div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="makeMeLoggedin(loginForm.value)">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Username</ion-label>
+            <ion-input type="email" formControlName="username"></ion-input>
+          </ion-col>
+          <ion-col size="12" *ngFor="let validation of validation_messages.username">
+            <!--VALIDATION-->
+            <div class="validation-errors">
+              <ng-container>
+                <div class="error-message"
+                  *ngIf="loginForm.get('username').hasError(validation.type) && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <!--VALIDATION-->
+          </ion-col>
+        </ion-row>        
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">password</ion-label>
+            <ion-input [type]="passwordType" formControlName="password"></ion-input>
+            <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+          </ion-col>
+          <ion-col size="12" *ngFor="let validation of validation_messages.password">
+            <!--VALIDATION-->
+            <div class="validation-errors">
+              <ng-container>
+                <div class="error-message"
+                  *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <!--VALIDATION-->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item class="ion-text-center">
+        <ion-button type="submit" color="" [disabled]="!loginForm.valid">Sign In<!-- Login --></ion-button>
+      </ion-item>
+    </form>
+    <ion-grid class="other-options">
+      <ion-row>
+        <ion-col size="12" class="ion-text-center txt-link" (click)="redirectTo('https://farhatsweets.org/my-account/lost-password/')"><!-- Lost your password? --> Forgot Password?</ion-col>
+        <ion-col size="12" class="ion-text-center or-txt">or</ion-col>
+        <ion-col size="12" class="ion-text-center social-btn-list">
+          <ion-button class="social-btn" color=""><img src="../assets/images/fb-img-icon1.png"></ion-button>
+          <ion-button class="social-btn" color=""><img src="../assets/images/gmail-img-icon1.png"></ion-button>
+        </ion-col>
+        <ion-col size="12" class="ion-text-center txt-link" routerDirection="root" routerLink="/register">Dont have an account? <!-- Don't you have an account? <strong>Register</strong> --></ion-col>
+        <ion-col size="12" class="ion-text-center" routerDirection="root" routerLink="/register">
+          <ion-button class="border-btn" color="">Register</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+	</div>	
+</ion-content>

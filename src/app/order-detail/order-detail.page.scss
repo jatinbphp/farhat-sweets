@@ -1,0 +1,116 @@
+ion-header {
+    /*border-bottom: 1px solid #f6f6f6;*/
+    border-bottom: 1px solid #ebebeb;
+    width: 97%;
+    margin: 0px auto;
+}
+.ord-dt {
+    font-family: var(--font-Poppins-Reguler);
+    color: var(--ion-product-name-color);
+    padding: 20px 16px;
+    display: flex;
+    justify-content: space-between;
+    .box {
+        background: #E5E5E5;
+        width: 100%;
+        height: 40px;
+        border-radius: 3px;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        justify-content: center;
+        margin: 5px;
+        span {
+            font-weight: 500;
+        }
+    }
+}
+
+.delivered {
+    font-family: var(--font-Poppins-Reguler);
+    color: var(--ion-product-name-color);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.prod-dt {
+    font-family: var(--font-Poppins-Reguler);
+    color: var(--ion-product-name-color);
+    h6 {
+        font-size: 14px;
+        color: #000;
+        margin-top: 0;
+    }
+    ion-grid {
+        font-family: var(--font-Poppins-Reguler);
+        color: var(--ion-product-name-color);
+        border-right: 1px solid #262626;
+        padding: 0;
+        border-bottom: 1px solid #262626;
+        .head {
+            background: var(--tab-selected);
+            ion-col {
+                font-size: 12px;
+                color: #fff;
+                font-weight: 500;
+                &:last-child {
+                    border-left: 1px solid #fff;
+                }
+            }
+        }
+        ion-col {
+            border-left: 1px solid #262626;
+            border-top: 1px solid #262626;
+            font-size: 9px;
+            &:first-child {
+                flex-grow: 1;
+            }
+            &.price {
+                font-family: var(--font-Poppins-Reguler);
+                font-size: 10px;
+                color:var(--text-price-color);
+                font-weight: 500;
+                flex-shrink: 0;
+                flex-shrink: 0;
+                max-width: 64px !important;
+                width: 64px !important;
+                flex: 0 0 64px !important;
+            }
+        }
+        .total-row {
+            ion-col {
+                font-size: 12px;
+                font-weight: 500;                
+                .hideme{
+                    display:none;
+                }
+            }
+        }
+    }
+}
+
+.ord-address {
+    padding-bottom: 50px;
+    font-family: var(--font-Poppins-Reguler);
+    .box {
+        font-size: 9px;
+        color: #262626;
+        height: auto;
+        padding: 10px 12px;
+        line-height: 14px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        span {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        a {
+            color: #262626;
+            text-decoration: none;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="start" routerDirection="root" routerLink="/shop">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <!--<ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>
+    </ion-buttons>-->
+    <!--<ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>-->
+    <ion-title class="ion-text-center">
+      <h2>SHOP&nbsp;/&nbsp;{{ProductCategoryDetail.name}}</h2>
+    </ion-title>
+    <ion-chip slot="end">
+      <ion-label [ngClass]="{'show-red-dot' : num_of_items_in_cart > 0}">{{num_of_items_in_cart}}</ion-label>
+      <!--<ion-icon :icon="bag"></ion-icon>-->
+      <img src="../../assets/images/cart-bag-icon1.png">
+    </ion-chip>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--<h1 class="bread-crumb">SHOP&nbsp;/&nbsp;{{ProductCategoryDetail.name}}</h1>-->
+  <ion-grid class="product-categories">
+    <ion-row>
+      <ion-col size="6" *ngFor="let categories of ProductSubCategories; let i = index;" (click)="shopByCategory(categories.id)">
+        <div class="sub-banner" *ngIf="categories.name!=''">
+          <div [ngStyle]="{'background':'url('+ categories.image.src +')'}" class="thumbStyle"></div>
+          <h1 [innerHTML]="categories.name"></h1>
+          <h5>{{categories.count}} PRODUCTS</h5>	
+        </div>
+      </ion-col>      
+    </ion-row>
+  </ion-grid>
+</ion-content>

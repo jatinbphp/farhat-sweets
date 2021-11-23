@@ -1,0 +1,105 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>
+    <!--<ion-chip slot="end">
+      <ion-label>3</ion-label>
+      <ion-icon :icon="bag"></ion-icon>      
+    </ion-chip>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <h1 class="ion-text-center">MY ACCOUNT</h1> -->
+  <div class="registration-form">  
+    <form [formGroup]="profileForm" (ngSubmit)="updateUserInformation(profileForm.value)">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">First name</ion-label>
+            <ion-input type="text" formControlName="account_first_name"></ion-input>
+          </ion-col>
+          <ion-col size="12" *ngFor="let validation of validation_messages.account_first_name">
+            <!--VALIDATION-->
+            <div class="validation-errors">
+              <ng-container>
+                <div class="error-message"
+                  *ngIf="profileForm.get('account_first_name').hasError(validation.type) && (profileForm.get('account_first_name').dirty || profileForm.get('account_first_name').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <!--VALIDATION-->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Last name</ion-label>
+            <ion-input type="text" formControlName="account_last_name"></ion-input>
+          </ion-col>
+          <ion-col size="12" *ngFor="let validation of validation_messages.account_last_name">
+            <!--VALIDATION-->
+            <div class="validation-errors">
+              <ng-container>
+                <div class="error-message"
+                  *ngIf="profileForm.get('account_last_name').hasError(validation.type) && (profileForm.get('account_last_name').dirty || profileForm.get('account_last_name').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <!--VALIDATION-->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Display name</ion-label>
+            <ion-input type="text" formControlName="account_display_name"></ion-input>
+          </ion-col>
+          <ion-col size="12" *ngFor="let validation of validation_messages.account_display_name">
+            <!--VALIDATION-->
+            <div class="validation-errors">
+              <ng-container>
+                <div class="error-message"
+                  *ngIf="profileForm.get('account_display_name').hasError(validation.type) && (profileForm.get('account_display_name').dirty || profileForm.get('account_display_name').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <!--VALIDATION-->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input type="email" formControlName="account_email"></ion-input>
+          </ion-col>
+          <ion-col size="12" *ngFor="let validation of validation_messages.account_email">
+            <!--VALIDATION-->
+            <div class="validation-errors">
+              <ng-container>
+                <div class="error-message"
+                  *ngIf="profileForm.get('account_email').hasError(validation.type) && (profileForm.get('account_email').dirty || profileForm.get('account_email').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <!--VALIDATION-->
+          </ion-col>
+        </ion-row>                        
+      </ion-grid>
+      <ion-item lines="none">
+        <ion-button type="submit" color="" [disabled]="!profileForm.valid">Save Changes</ion-button>
+      </ion-item>
+    </form>    
+  </div>
+</ion-content>

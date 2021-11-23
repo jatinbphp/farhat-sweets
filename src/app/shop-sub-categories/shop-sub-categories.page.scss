@@ -1,0 +1,156 @@
+ion-header {
+    /*border-bottom: 1px solid #f6f6f6;*/
+    border-bottom: 1px solid #ebebeb;
+    width: 97%;
+    margin: 0px auto;
+    ion-button {
+        --background: transparent;
+        --color: var(--color);
+        --padding-start: 0;
+        --padding-end: 0;
+        margin: 0;
+        font-size: 25px;
+        height: fit-content;
+    }
+    ion-title {
+        h2 {
+            font-family: var(--font-Poppins-SemiBold);
+            color:var(--color);
+            font-size: 22px;
+            line-height: 24px;
+            margin: 0px;
+            text-transform: capitalize;
+        }
+        h6 {
+            font-family: var(--font-NeueHaasUnica-Regular);
+            color:var(--color);
+            font-size: 16px;
+            line-height: 18px;
+            margin: 0px;
+        }
+    }
+}
+ion-content{
+    h1{
+        &.bread-crumb{
+        font-family: var(--font-Poppins-SemiBold);
+        color:var(--color);
+        font-size: 22px;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        align-items: center;
+        text-transform: uppercase;
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            width: 80px;
+            height: 2px;
+            background: var(--h1-color-before);
+            transition: 0.3s;
+        }
+        
+        }
+    }
+    ion-grid{
+        &.product-categories{
+            padding: 0px;
+            margin: 25px 0px 25px;
+            background: #FFFFFF;
+            @media(max-width:374px) {
+                margin: 5px 0px 25px;
+            }            
+            ion-row{
+                padding: 0px 2px;
+                ion-col{
+                    .sub-banner {
+
+                        &:before {
+                            position: absolute;
+                            top: 150px;
+                            left: 0;
+                            right: 0;
+                            bottom: 20px;
+                            background: rgba(255,255,255,.95);
+                            content: "";
+                        }
+                        .thumbStyle{
+                            
+                            height: 220px;
+                            background-size: cover !important;
+                            background-position: center !important;
+                            border-radius: 5px;
+                            
+                            max-width: 100%;
+                            width: 100%;
+                            margin: 0 auto;
+                        }
+                        h1 {
+                            width:98%;
+                            position: absolute;
+                            top: 140px;
+                            text-align: center;
+                            font-family: var(--font-Poppins-Reguler);
+                            color: var(--color);
+                            font-size: 13px;
+                            line-height: 17px;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                        }
+                        h5 {
+                            width:100%;
+                            position: absolute;
+                            top: 160px;
+                            text-align: center;
+                            font-family: var(--font-Poppins-Reguler);
+                            color: var(--color);
+                            font-size: 13px;
+                            line-height: 17px;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                        }
+                    }
+                    /*
+                    .thumbStyle {
+                        width: 120px;
+                        height: 120px;
+                        background-size: cover !important;
+                        background-position: center !important;
+                        margin-bottom: 16px;
+                        border-radius: 5px;
+                        position: relative;
+                        text-align: center;//MAULIK::ADDED
+                        &:before {
+                            position: absolute;
+                            top: 50px;
+                            left: 0;
+                            right: 0;
+                            bottom: 20px;
+                            background: rgba(255, 255, 255, 0.57);
+                            content: "";
+                        }
+                    }
+                    
+                    ion-label{
+                        &.product-name
+                        {
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            font-family: var(--font-Poppins-Reguler);
+                            color: var(--color);
+                            font-size: 15px;
+                            line-height: 17px;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                            padding: 10px 0 10px 0;
+                        }
+                    }
+                    */
+                }
+            }
+        }
+    }
+}

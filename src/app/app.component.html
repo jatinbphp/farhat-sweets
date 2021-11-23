@@ -1,0 +1,53 @@
+<ion-app>
+  <!--BEFORE::BELOW LINE ONLY-->
+  <!--<ion-router-outlet></ion-router-outlet>-->
+  <!--BEFORE::BELOW LINE ONLY-->
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Categories</ion-list-header>
+          <!--<ion-note *ngIf="user_welcome_text == ''">sales@farhatsweets.com</ion-note>
+          <ion-note *ngIf="user_welcome_text != ''">{{user_welcome_text}}</ion-note>-->
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <!--<ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>-->
+            <!--CATEGORIES/SUB-CATEGORIES-->            
+            <ion-grid *ngIf="p.categories.length > 0">
+              <ion-row *ngFor="let categoriesMainFarhat of p.categories; let c = index">
+                <ion-col size="12">
+                  <ion-grid class="category-main">
+                    <ion-row>
+                      <ion-col [ngClass]="{'active-category-main' : categoriesMainFarhat.id==category_id}" size="12" (click)="showShopScreen(categoriesMainFarhat.id,0)" *ngIf="categoriesMainFarhat.display=='default'">
+                        <ion-label [innerHTML]="categoriesMainFarhat.name"></ion-label>
+                      </ion-col>
+                      <ion-col [ngClass]="{'active-category-main' : categoriesMainFarhat.id==category_id}" size="12" (click)="showSubCategories(categoriesMainFarhat.id)" *ngIf="categoriesMainFarhat.display=='subcategories'">
+                        <ion-label [innerHTML]="categoriesMainFarhat.name"></ion-label>
+                      </ion-col>
+                      <!--OPEN IF SUB CATEGORY NEED TO SHOW::<ion-col size="12" *ngIf="categoriesMainFarhat.sub.length > 0">
+                        <ion-item [ngClass]="{'active-sub-category' : subCategoriesFarhat.id==sub_category_id}" lines="none" *ngFor="let subCategoriesFarhat of categoriesMainFarhat.sub; let s = index" (click)="showShopScreen(categoriesMainFarhat.id,subCategoriesFarhat.id)">
+                          <ion-label [innerHTML]="subCategoriesFarhat.name"></ion-label>                          
+                        </ion-item>
+                      </ion-col>::OPEN IF SUB CATEGORY NEED TO SHOW-->
+                    </ion-row>                    
+                  </ion-grid>
+                </ion-col>                
+              </ion-row>
+            </ion-grid>
+            <!--CATEGORIES/SUB-CATEGORIES-->
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-list id="labels-list" *ngIf="labels">
+          <ion-list-header>Help & Info</ion-list-header>
+          <ion-item *ngFor="let label of labels" lines="none">
+            <!--<ion-icon slot="start" [ios]="label.icon + '-outline'" [md]="label.icon + '-sharp'"></ion-icon>-->
+            <ion-label (click)="redirectTo(label.url)">{{ label.title }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>  
+</ion-app>

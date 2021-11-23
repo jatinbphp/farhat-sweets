@@ -1,0 +1,132 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="start" (click)="goBack()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <!--<ion-buttons slot="start">
+      <ion-menu-button>
+        <img src="../../assets/images/menu-icon1.svg">
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      <ion-img src="../../assets/images/farhat-sweets.png"></ion-img>      
+    </ion-title>-->
+    <ion-chip slot="end">
+      <ion-label [ngClass]="{'show-red-dot' : num_of_items_in_cart > 0}">{{num_of_items_in_cart}}</ion-label>
+      <!--<ion-icon :icon="bag"></ion-icon>-->
+      <img src="../../assets/images/cart-bag-icon1.png">
+    </ion-chip>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <ion-grid class="best-selling">
+    <div class="productDetails-slider">
+      <ion-row>
+        <ion-col *ngIf="productDetailsIMGLength > 0">
+          <ion-slides pager="true" class="banner-slider">
+            <ion-slide *ngFor="let slide of productDetails.images;let i=index;">
+              <ion-img src="{{productDetails.images[i].src}}"></ion-img>      
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="productDetails-txt">
+      <ion-row>
+        <ion-col size="6" class="ion-text-left prodCategorieName">
+          <div *ngFor="let prodCategories of productDetails.categories;" class="product-category">
+            <span [innerHTML]="prodCategories.name"></span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right prodRating"></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="product-name ion-text-left" [innerHTML]="productDetails.name">          
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" *ngIf="productDetails.price_html!=''" class="product-price ion-text-left" [innerHTML]="productDetails.price_html"></ion-col>
+        <ion-col size="6" *ngIf="productDetails.price_html==''">&nbsp;</ion-col>
+        <ion-col size="6" class="product-stock ion-text-right">
+          <div class="in-stock" *ngIf="productDetails.stock_status=='instock'"><ion-icon name="checkmark-outline"></ion-icon> in stock</div>
+          <!-- <div class="out-stock"><ion-icon name="close-outline"></ion-icon>out stock</div> -->
+        </ion-col>
+        <ion-col size="12" *ngIf="productDetails.price_html==''" class="product-price ion-text-left price-error-message">stop by the store for pricing</ion-col>
+      </ion-row>      
+      <ion-row *ngIf="productDetails.short_description!=''">
+        <ion-col class="product-short-description" [innerHTML]="productDetails.short_description"></ion-col>
+      </ion-row>
+      <ion-row *ngIf="productDetails.description!=''">
+        <ion-col class="product-description" [innerHTML]="productDetails.description"></ion-col>
+      </ion-row>
+      <ion-row *ngIf="ProductVariations.length > 0">
+        <ion-col>
+          <ion-select placeholder="Choose an option" (ionChange)="selectedVariation($event.target.value)">
+            <ion-select-option value="any#0">Choose an option</ion-select-option>
+            <ion-select-option *ngFor="let variations of ProductVariations;let v=index;" value="{{variations.id}}#{{variations.price}}">{{variations.attributes[0].option}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>      
+      <!-- <ion-row class="col-width-fit-cnt">
+        <ion-col class="ion-text-left">Categories</ion-col>
+        <ion-col class="ion-text-left">
+          <div *ngFor="let prodCategories of productDetails.categories;" class="product-category">
+            <span [innerHTML]="prodCategories.name"></span>
+          </div>
+        </ion-col>
+      </ion-row> -->
+      <ion-row *ngIf="productDetails.price_html!=''">
+        <ion-col>
+          <div *ngIf="productDetails.stock_status=='instock'">
+            <div class="pro-btns-sec" *ngFor="let product of qtyIncrease;let i=index;">
+              <!-- <div class="pro-quantity-input">                
+                  <input class="minus" type="button" value="-" (click)="decreaseQuantity(productDetails)">
+                  <input class="input-number" type="number" value="{{qtyIncrease[i].product_qt}}">
+                  <input class="plus" type="button" value="+" (click)="increaseQuantity(productDetails)">
+              </div> -->
+              <button class="cart-icon-btn cart-btn" (click)="updateCart(productDetails.id,qtyIncrease[i].product_qt)">Add to cart</button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row> 
+    </div>           
+  </ion-grid>
+  <ion-grid class="related-product" *ngIf="relatedProductDetails.length > 0">
+    <ion-row>
+      <ion-col class="related-product-title">
+        <h2>Related Products</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-slides [options]="relatedProductSlideOptions">
+          <ion-slide *ngFor="let relatedProduct of relatedProductDetails | keyvalue; let img=index;">
+            <ion-grid class="related-product-grid" (click)="changeToProduct(relatedProduct.value.id,from_screen)">
+              <ion-row>
+                <ion-col class="related-product-image">
+                  <ion-img src="{{relatedProduct.value.images[0].src}}" *ngIf="relatedProduct.value.images.length > 0"></ion-img>
+                  <ion-img src="../../assets/images/icon.png" *ngIf="relatedProduct.value.images.length == 0"></ion-img>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="related-product-category">
+                  {{relatedProduct.value.categories[0].name}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="related-product-name">
+                  {{relatedProduct.value.name}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="related-product-price" *ngIf="relatedProduct.value.price_html!=''" [innerHTML]="relatedProduct.value.price_html"></ion-col>
+                <ion-col class="related-product-price price-error-message" *ngIf="relatedProduct.value.price_html==''">stop by the store for pricing</ion-col>
+              </ion-row>                  
+            </ion-grid>
+          </ion-slide>      
+        </ion-slides>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

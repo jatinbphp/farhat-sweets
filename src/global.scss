@@ -1,0 +1,286 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+:root {
+    --font-Poppins-Reguler:'Poppins-Regular' ;
+    --font-Poppins-Medium:'Poppins-Medium' ;
+    --font-Poppins-Light:'Poppins-Light' ;
+    --font-Poppins-Thin:'Poppins-Thin' ;
+    --font-Poppins-SemiBold:'Poppins-SemiBold' ;
+    --font-Poppins-ExtraBold:'Poppins-ExtraBold' ;
+    --font-Poppins-Bold:'Poppins-Bold' ;
+    --font-Poppins-Black:'Poppins-Black' ;
+    --font-Poppins-Italic:'Poppins-Italic' ;
+    --font-NeueHaasUnica-Regular:'NeueHaasUnica-Regular' ;
+    --font-NeueHaasUnica-Bold:'NeueHaasUnica-Bold' ;
+}
+
+ion-item {
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+}
+
+ion-header{
+    padding: 16px 0px;
+    ion-toolbar{
+        --border-width: 0px !important;
+        --background: var(--ion-background-color, #fff);
+        ion-buttons {
+            width: 28px;
+            position: unset;
+            margin-inline-start: 0px;
+            ion-menu-button {
+                width: 100%;
+                --padding-start: 0px;
+                --padding-end: 0px;
+                img {
+                    width: 100%;
+                }
+            }
+            ion-icon {
+                font-size: 28px !important;
+                color: #fff !important
+            }
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                width: 28px;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+        ion-title{
+            width: calc(100% - 28px - 60px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: unset;
+            padding: 0px;
+            margin: 0px auto;
+            ion-img{
+                width: 100%;
+                height:50px;
+                object-fit: contain;
+            }
+        }
+        ion-chip {
+            width: 60px;
+            background: transparent;
+            padding: 0px;
+            margin: 0px;
+            border-radius: 0px;
+            ion-label {
+                width: 26px;
+                height: 26px;
+                line-height: 24px;
+                text-align: center;
+                border-radius: 100%;
+                font-size: 16px;
+                color: #fff;
+                font-family: var(--font-NeueHaasUnica-Regular);
+                background-color: #e60024;
+                margin-right: 10px;
+                padding:2px;
+            }
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                width: 26px;
+                height: auto;
+                object-fit: contain;
+                filter: invert(0%) sepia(6%) saturate(185%) hue-rotate(320deg) brightness(95%) contrast(86%);
+            }
+        }
+    }
+}
+
+ion-content{
+    --background: var(--ion-background-color, #fff);    
+    .validation-errors {
+        font-size: 15px;
+        line-height: 19px;
+        color: #eb445a;
+        padding-top: 5px;
+
+        .error-message {
+            display: flex;
+            align-items: center;
+        }
+    }    
+}
+
+ion-slides {
+    &.banner-slider {
+        padding: 0px 0px 20px;
+        margin: 0px 6px;
+        .swiper-slide {}
+        .swiper-pagination-bullets {
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: fit-content !important;
+            height: -webkit-fit-content !important;
+            height: -moz-fit-content !important;
+            height: -ms-fit-content !important;
+            height: -o-fit-content !important;
+            text-align: left;
+            padding-left: 0;
+            margin-left: -4px;
+        }
+        .swiper-pagination-bullet {
+            width: 6px;
+            height: 6px;
+            background: #d0d0d0;
+            border: 1px solid #fff;
+            opacity: 1;
+        }
+        .swiper-pagination-bullet-active {
+            background: #9b9b9b;
+            border-color: #9b9b9b;
+            opacity: 1;
+        }
+    }
+}
+
+app-shop {
+    ion-searchbar {
+        padding: 0px 0px !important;
+        width: 97% !important;
+        height: 54px !important;
+        margin: 30px auto 0px !important;
+        @media screen and (max-width: 360px) {}
+        &.searchbar-should-show-clear {
+            .searchbar-input-container {
+                .searchbar-clear-button {
+                    display: none !important;
+                }
+            }
+        }
+        .searchbar-input-container {
+            width: 100%;
+            height: 100% !important;
+            input {
+                width: 100% !important;
+                height: 100% !important;
+                background-color: #fff !important;
+                border-radius: 10px !important;
+                box-shadow: none !important;
+                color: rgba(0,0,0) !important;
+                padding-right: 40px !important;
+                padding-left: 18px !important;
+                font-size: 15px !important;
+                font-family: var(--font-Poppins-Reguler) !important;
+                font-weight: normal !important;
+                border: 1px solid #e5e5e5 !important;
+                --placeholder-color: rgba(0,0,0,0.5) !important;
+                --placeholder-opacity: 1 !important;
+                @media screen and (max-width: 360px) {}
+            }
+            ion-icon {
+                &.searchbar-search-icon {
+                    left: unset;
+                    right: 18px;
+                    top: 0px;
+                    width: 20px;
+                    height: 100%;
+                    color: #656565 !important;
+                }
+            }
+            button.searchbar-clear-button {
+                display: none;
+            }
+        }
+    }
+}
+
+app-shop .searchbar-has-value.searchbar-should-show-clear.sc-ion-searchbar-ios-h .searchbar-clear-button.sc-ion-searchbar-ios {
+    display: none;
+}
+:host(.item-label-stacked) .input-wrapper, 
+:host(.item-label-floating) .input-wrapper {
+    flex: 1 1 0% !important;
+    flex-direction: column !important;
+}
+app-login {
+    ion-input {
+        min-height: 54px !important;
+    }
+}
+
+.my-action-sheet
+{
+	font-family: var(--font-Poppins-SemiBold);
+    --background: #262626;
+	--button-color: #FFFFFF;      
+	.action-sheet-group{
+        border-radius: 20px;
+        margin:10px;
+        .action-sheet-title
+        {
+            background-color:var(--h1-color);
+            font-size: 25px;
+            color: #FFFFFF;
+            text-align: left;
+            box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.3);  
+        }
+        .action-sheet-button{
+            &.hideme{
+                display:none;
+            }
+            &.app-version
+            {
+                ion-icon{
+                    display:none;
+                }            
+                span{
+                    color:#FFFFFF;
+                    font-size:15px;
+                    justify-content: flex-end;
+                }
+            }
+            box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);  
+            height:60px;
+        }
+        .action-sheet-button-inner
+        {
+            font-size:17px;
+            font-weight: 500;
+            justify-content: left;
+            color:var(--h1-color-before);
+        }
+        .action-sheet-icon
+        {
+            color: var(--h1-color-before);;
+            margin-right: 5px;
+            border-radius: 50px;
+            box-shadow: 0px 0px 5px #000000;
+            padding: 0.3em 0.3em;
+            align-items: center;
+        }
+    }
+}//TABS > ACTION SHEET
