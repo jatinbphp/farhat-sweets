@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" width="30" height="30">
+	<title>Layer 15</title>
+	<defs>
+		<image  width="26" height="26" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAAXNSR0IB2cksfwAAAKhQTFRF7Ozsfn5+bW1tdHR009PT////1NTU7u7uqampEhISERERExMTa2trpaWlGBgYMjIyZmZmZWVlFxcXGxsbaGho/v7+Z2dnpKSks7OzeXl5eHh4tbW1+/v7r6+vnp6eo6Oj6+vrra2t+vr6/f39/Pz82traMTExHh4esbGx29vbp6enoaGhRkZGFhYWZGRkGhoa1dXVWVlZw8PDj4+PjY2NxMTE4uLi1tbWhsn9RgAAADh0Uk5TMP////8A/xD/////////////////AP///////wD///9A/wAAAP//////////////////////0P9+KZHvAAAA9klEQVR4nJWR21rCQAyEAziFbClQYIsiigoC5WTxgO//Zm43263FcuFc5f+m2WRSokbTqXUDBK2CGm3qMCu2CrtAl706FHFPPuvzAIi5LzTkyFgjWI05zq2x0KjW0n8tdb0rrLP0rwcTU+rcmlzOUr4rt7xi6LikiG5VWMAdMGV/gXuaPTw6zZ8AmhT0/EK4KoJeLEV2Ty31zBC9ropR6w2wWUuteJXSttzJREpK2prlhzurvUTeCx1U5bxH4MiVyJXz+muof/4vq7caK7GgXVdmdRLrlAU5ySyXkcXyFNG7z6g+gM8y8hfhbJ/7DrJ0CSzSzOmMH7ijJN/V7iiCAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Layer 15" href="#img1" x="0" y="0" />
+</svg>

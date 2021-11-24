@@ -56,6 +56,10 @@ ion-header {
         font-family: var(--font-Poppins-SemiBold);
         margin: 0px;
         padding: 0px;
+        @media(max-width:374px) {
+            font-size: 22px;
+            line-height: 24px;
+        }
     }
     p {
         font-size: 14px;
@@ -140,19 +144,20 @@ ion-header {
                     border:none; background:none;
                     &:focus{outline: none;}
                     &.input-number {
-                        width:20px;	
+                        width: 26px;	
                         height: calc(100% - 10px);
+                        height: 100%;
                         background: transparent;
                         color:#000;
                         font-size: 19px;
                         text-align: center;
-                        
                     }
                     &.minus, &.plus {
                         font-size: 24px;
                         color: #000;
-                        width:26px;
+                        width: 26px;
                         height: calc(100% - 10px);
+                        height: 100%;
                         text-align:center;
                         padding:0;
                         line-height: 1;
@@ -164,6 +169,7 @@ ion-header {
             }
         }  
         .price-delete {
+            padding: 0px;
             display: flex;
             flex-flow: column;
             justify-content: space-between;
@@ -177,6 +183,10 @@ ion-header {
                 align-items: flex-start;
                 justify-content: flex-end;
                 padding: 0px;
+                @media(max-width:374px) {
+                    font-size: 20px;
+                    line-height: 22px;
+                }
             }
             ion-icon {
                 width: 28px;

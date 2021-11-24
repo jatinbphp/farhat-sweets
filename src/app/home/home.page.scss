@@ -241,6 +241,9 @@ ion-content{
                                     @media(max-width:767px) {
                                         min-height: 70px;
                                     }
+                                    @media(max-width:374px) {
+                                        min-height: 100px;
+                                    }
                                 }
                                 .product-category{
                                     font-size:13px;

@@ -116,6 +116,16 @@ ion-header{
                 filter: invert(0%) sepia(6%) saturate(185%) hue-rotate(320deg) brightness(95%) contrast(86%);
             }
         }
+        ion-button {
+            --background: transparent;
+            --color: var(--color);
+            --padding-start: 0;
+            --padding-end: 0;
+            margin: 0;
+            font-size: 25px;
+            height: fit-content;
+            --box-shadow: none;
+        }
     }
 }
 

@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 25" width="30" height="27">
+	<title>Layer 14</title>
+	<defs>
+		<image  width="28" height="25" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAZCAMAAAAVHr4VAAAAAXNSR0IB2cksfwAAAL1QTFRF////6enp/Pz89PT08fHx6Ojo/v7+w8PDEhISe3t79vb2Nzc3MzMzf39/ERERxcXFoaGhSkpK5OTkT09PS0tL5+fnExMT+Pj4vr6+np6eoqKijo6OuLi4IiIit7e3Z2dnz8/PpKSkn5+f6urqV1dXqKiov7+/vb29vLy8gYGBra2t0dHRy8vLhYWF7+/vPj4+09PTeHh4QEBA6+vrQUFB1NTUPz8/wcHBwsLCTk5O5ubmxMTE9/f3+/v78vLyh+A0ygAAAD90Uk5TAGAAAABwAP///wD/////////sP//gP8A//////////////9Q/////////////wD/////QP///////5D/AAAAGH0dHAAAAPZJREFUeJx1UgcSgjAQDCrhVIzYIvbee8X+/2dpuEQC4s4w2cnmuNxuCPnASBBEMiVJwvQXSogFadzKZO0MbuZYXh5zoIDEBCgiK4FDlVhGUtFF8l9ksZU0WsmFWLVcB1jNtaq+WA/9tsEA0Yjp2Wyh1moqkYZ6Bggq29D5L9Kucq3X/xG/GDAwkA1h5M82nkxnc9ddCM6VCcvVWiwbcUP++baEBg5J7Dj4A+4HukPqNloqWHk4Sjd2Qo4Yf8I2wM8hE2TPk+cxKHkXMxCpHtmVxeb5E9lXZFrYUfEW80zukEPysO0HJpWGu4yMGE95LPWSo+O7fQM4/hQKZWmFIgAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Layer 14" href="#img1" x="0" y="0" />
+</svg>

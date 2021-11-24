@@ -18,7 +18,8 @@ export class ShopByCategoryPage implements OnInit
   public categoryImage: string='';
   public queryString: any=[];
   public main_cat_id: string = '';
-
+  public show_in_view: string = 'grid';
+  public ProductCategories:any=[];
   public ProductsWithinCategory: any = [];
   public MoreProductsWithinCategory: any = [];
   public id : any = '';
@@ -55,6 +56,17 @@ export class ShopByCategoryPage implements OnInit
     }
     //CART RELATED
     
+    //PARENT CATEGORIES ONLY    
+    await this.client.getProductCategories().then((data) => 
+    {  
+      this.ProductCategories=data;
+    },
+    error => 
+    {
+      console.log();
+    });
+    //PARENT CATEGORIES ONLY
+
     this.route.queryParams.subscribe(params => 
     {
       if(params && params.special)
@@ -232,4 +244,39 @@ export class ShopByCategoryPage implements OnInit
     this.arrayImageLoaded[imageIndex]=true;
     console.log(this.arrayImageLoaded);
   }//LAZY LOADING
+
+  showGridView()
+  {
+    this.show_in_view='grid';
+  }
+
+  showListView()
+  {
+    this.show_in_view='list';
+  }
+
+  shopByCategory(category_id,sub_category_id)
+  {
+    let take_category_or_sub_category = (sub_category_id > 0) ? sub_category_id : category_id;
+    console.log(category_id);
+    this.queryString = 
+    {
+      id:take_category_or_sub_category,
+      from_screen:"shop",
+      cat_and_sub:category_id+"@"+sub_category_id
+    };
+
+    let navigationExtras: NavigationExtras = 
+    {
+      queryParams: 
+      {
+        special: JSON.stringify(this.queryString)
+      }
+    };
+
+    this.client.router.navigate(['/shop-by-category'], navigationExtras).then(() => 
+    {
+      window.location.reload();
+    });
+  }
 }

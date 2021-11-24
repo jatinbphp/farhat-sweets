@@ -7,7 +7,7 @@
       <ion-menu-button><img src="../../assets/images/menu-icon1.svg"></ion-menu-button>
     </ion-buttons>-->
     <ion-title class="ion-text-center">
-      <h2 [innerHTML]="ProductCategoryDetail.name"></h2>
+      <h2 [innerHTML]="ProductCategoryDetail.name" text-wrap></h2>
       <!--<ion-img src="../../assets/images/farhat-sweets.png"></ion-img>-->
     </ion-title>
     <ion-chip slot="end">
@@ -24,7 +24,28 @@
 	</div>
   <h1 [innerHTML]="ProductCategoryDetail.name"></h1>-->
   <ion-item class="error-message" lines="none" *ngIf="ProductsWithinCategory == 0">Awaiting products...</ion-item>
-  <ion-grid class="best-selling" *ngIf="ProductsWithinCategory.length > 0">		        
+  <div class="filter-category">
+    <div class="filter-sec">
+      <div class="filter-txt">
+        <img src="../../assets/images/filter-icon1.svg">
+        <h6>filter</h6>
+      </div>
+      <div class="filter-icons">
+        <img class="grid-icon1" src="../../assets/images/grid-icon1.svg" (click)="showGridView()">
+        <img class="list-icon1" src="../../assets/images/list-icon1.png" (click)="showListView()">
+      </div>
+    </div>
+    <div class="category-sec">
+      <ion-list *ngIf="ProductCategories.length > 0">
+        <div *ngFor="let category of ProductCategories;">
+          <ion-item *ngIf="category.display=='default'" [ngClass]="{'active-me' : category.id == id}" (click)="shopByCategory(category.id,0)">
+            <span [innerHTML]="category.name"></span>
+          </ion-item>
+        </div>        
+      </ion-list>
+    </div>
+  </div>
+  <ion-grid class="best-selling" *ngIf="ProductsWithinCategory.length > 0 && show_in_view=='grid'">		        
     <ion-row class="product-list-main">
       <ion-col class="product-main-box" *ngFor="let product of ProductsWithinCategory;let i=index;">
         <ion-grid (click)="showProductDetail(product.id)">            
@@ -41,6 +62,25 @@
         </ion-grid>
       </ion-col>
     </ion-row>
-  </ion-grid><!--WILL APPEAR WHEN POPULAR PRODUCT FOUND DYNAMICALLY-->
+  </ion-grid><!--GRID::WILL APPEAR WHEN POPULAR PRODUCT FOUND DYNAMICALLY-->
+  <ion-grid class="best-selling" *ngIf="ProductsWithinCategory.length > 0 && show_in_view=='list'">		        
+    <ion-row class="product-list-main list-view">
+      <ion-col class="product-main-box" *ngFor="let product of ProductsWithinCategory;let i=index;">
+        <ion-grid (click)="showProductDetail(product.id)">            
+          <ion-row>
+            <ion-col>
+              <ion-img *ngIf="product.images.length > 0" [src]="product.images[0].src" (ionImgWillLoad)="imageNotLoaded(i)" (ionImgDidLoad)="imageLoaded(i)" [ngClass]="{'lazy-me' : arrayImageLoaded[i] == false}"></ion-img>
+              <div class="product-detail">
+                <h6 class="product-name" [innerHTML]="product.name"></h6>
+                <div class="product-price" [innerHTML]="product.price_html" *ngIf="product.price_html!=''"></div>                
+                <div class="product-price price-error-message" *ngIf="product.price_html==''">stop by the store for pricing</div>
+                <div class="product-price" *ngIf="product.stock_status=='outofstock'">OUT OF STOCK</div>
+              </div>              
+            </ion-col>          
+          </ion-row>          
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid><!--LIST::WILL APPEAR WHEN POPULAR PRODUCT FOUND DYNAMICALLY-->
   <button *ngIf="ProductsWithinCategory.length > 4 && currentPage < totalNumberOfPages" class="uppercase view-all-popular-pro button button-md button-default button-default-md" ion-button="" type="" (click)="loadMoreProducts()">load more</button>
 </ion-content>
