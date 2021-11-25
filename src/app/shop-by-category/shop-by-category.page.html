@@ -7,7 +7,8 @@
       <ion-menu-button><img src="../../assets/images/menu-icon1.svg"></ion-menu-button>
     </ion-buttons>-->
     <ion-title class="ion-text-center">
-      <h2 [innerHTML]="ProductCategoryDetail.name" text-wrap></h2>
+      <ion-label [innerHTML]="ProductCategoryDetail.name" text-wrap></ion-label>
+      <!--<h2 [innerHTML]="ProductCategoryDetail.name" text-wrap></h2>-->
       <!--<ion-img src="../../assets/images/farhat-sweets.png"></ion-img>-->
     </ion-title>
     <ion-chip slot="end">
@@ -31,15 +32,14 @@
         <h6>filter</h6>
       </div>
       <div class="filter-icons">
-        <img class="grid-icon1" src="../../assets/images/grid-icon1.svg" (click)="showGridView()">
-        <img class="list-icon1" src="../../assets/images/list-icon1.png" (click)="showListView()">
+        <img class="grid-icon1" src="../../assets/images/grid-icon1.svg" [ngClass]="{'active-icon' : show_in_view == 'grid'}" (click)="showGridView()">
+        <img class="list-icon1" src="../../assets/images/list-icon1.png" [ngClass]="{'active-icon' : show_in_view == 'list'}" (click)="showListView()">
       </div>
     </div>
     <div class="category-sec">
       <ion-list *ngIf="ProductCategories.length > 0">
-        <div *ngFor="let category of ProductCategories;">
-          <ion-item *ngIf="category.display=='default'" [ngClass]="{'active-me' : category.id == id}" (click)="shopByCategory(category.id,0)">
-            <span [innerHTML]="category.name"></span>
+        <div class="category-div" *ngFor="let category of ProductCategories;">
+          <ion-item *ngIf="category.display=='default'" [innerHTML]="category.name" [ngClass]="{'active-me' : category.id == id}" (click)="shopByCategory(category.id,0)">
           </ion-item>
         </div>        
       </ion-list>
