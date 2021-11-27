@@ -23,8 +23,7 @@
 		<ion-img src="{{categoryImage}}" *ngIf="categoryImage != ''"></ion-img>
 		<ion-img src="../../assets/images/icon.png" *ngIf="categoryImage == ''"></ion-img>    
 	</div>
-  <h1 [innerHTML]="ProductCategoryDetail.name"></h1>-->
-  <ion-item class="error-message" lines="none" *ngIf="ProductsWithinCategory == 0">Awaiting products...</ion-item>
+  <h1 [innerHTML]="ProductCategoryDetail.name"></h1>-->  
   <div class="filter-category">
     <div class="filter-sec">
       <div class="filter-txt">
@@ -45,6 +44,7 @@
       </ion-list>
     </div>
   </div>
+  <ion-item class="error-message-shop-by-category" lines="none" *ngIf="ProductsWithinCategory.length == 0">Awaiting products...</ion-item>
   <ion-grid class="best-selling" *ngIf="ProductsWithinCategory.length > 0 && show_in_view=='grid'">		        
     <ion-row class="product-list-main">
       <ion-col class="product-main-box" *ngFor="let product of ProductsWithinCategory;let i=index;">

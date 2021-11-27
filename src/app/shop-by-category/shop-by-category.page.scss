@@ -80,12 +80,14 @@ ion-content{
     }
     ion-item{ 
         --background: transparant;
-        &.error-message{
+        &.error-message-shop-by-category{
             font-size:15px;
             line-height: 17px;
             font-weight: 500;
             color:var(--error-message-text-color);
             font-family: var(--font-Poppins-Reguler);
+            display: grid;
+            justify-content: center;
         }
     }
     .filter-category {
